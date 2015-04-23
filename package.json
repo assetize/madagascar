@@ -1,0 +1,6 @@
+{
+  "name": "madagascar",
+  "dependencies": {
+    "express": "^4.12.3"
+  }
+}
