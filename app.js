@@ -9,7 +9,4 @@ app.get("/", function(req, res){
 
 var server = app.listen(3000, function(){
   console.log("Listening on port", server.address().port);
-  console.log('Example app listening at http://%s:%s',
-              server.address().address,
-              server.address().port);
 });

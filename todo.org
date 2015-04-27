@@ -1,0 +1,8 @@
+* TODO geth integration
+** TODO connect to geth from the app
+** TODO set up ethereum.js
+** TODO sleep for 2s if can't connect; retry
+** TODO query for when "ready"
+** TODO test
+* TODO testbench setup
+* TODO routing

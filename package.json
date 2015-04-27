@@ -1,6 +1,19 @@
 {
   "name": "madagascar",
+  "version": "0.0.1",
+  "description": "Tokenization API server",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:assetize/madagascar.git"
+  },
   "dependencies": {
-    "express": "^4.12.3"
+    "express": "^4.12.3",
+    "web3": "*",
+    "lodash": "^3.7.0",
+    "highland": "^2.4.0",
+    "async": "^0.9.0"
+  },
+  "devDependencies": {
+    "mocha": "~2.2.4"
   }
 }
