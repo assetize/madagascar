@@ -1,7 +1,7 @@
 var ethCmd = require("../lib/eth_cmd"),
     utils = require("./utils");
 
-describe("EthCmd", function(){
+describe("ethCmd", function(){
   before(function(){
     ethCmd.connect();
   });
