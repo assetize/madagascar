@@ -1,5 +1,8 @@
 {
   "webserver":{
     "port": 8931
+  },
+  "eth": {
+    "port": 8545
   }
 }
