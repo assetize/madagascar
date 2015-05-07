@@ -20,7 +20,7 @@ describe("Contract", function(){
     });
   });
 
-  it.skip("can be linked to an address and desc", function(){
+  it.skip("can be linked with an address and desc", function(){
     
   });
 
