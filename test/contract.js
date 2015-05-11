@@ -1,11 +1,11 @@
 var Contract = require("../lib/contract"),
-    Geth = require("./utils/geth"),
+    ethCmd = require("../lib/eth_cmd"),
+    settings = require("./test_settings"),
     fs = require("fs");
 
 describe("Contract", function(){
-  var geth = new Geth();
-  
-  describe("if built from source", function(){ 
+  describe.skip("if built from source", function(){
+    //nice to have, but turns out to be a bit of a pain in the rear
     var contract;
     
     before(function(){
@@ -28,19 +28,42 @@ describe("Contract", function(){
       fnNames.should.containEql("transferTo");
     });
     
-    it.skip("obtains an address after deploy", function(){
-      (coinContract.address === undefined).should.be.true();
-      coinContract.deploy();
-      coinContract.address.should.be.a.String;
-      coinContract.length.should.be.equal(24);
+    it("can be deployed", function(done){
+      (contract.address === undefined).should.be.true;
+
+      contract.deploy(function(err, addr){
+        (!!err).should.be.false;
+        
+        addr.should.be.a.String;
+        addr.should.be.equal(contract.address);
+        addr.length.should.be.equal(24);
+
+        console.log(2,ethCmd.web3.eth.getCode(addr));
+
+        
+        done();
+      });
     });
   });
 
-  it.skip("can be linked with an address and abi of an existing contract", function(){
-    
+  it("can be linked with an address and abi of an existing contract", function(){
+    var contract = new Contract({
+      address: settings.coinContract.address,
+      abi: settings.coinContract.abi
+    });
+
+    contract.code.length.should.be.above(2);
   });
 
-  it.skip("can be loaded from the db", function(){
-    
+  it("cannot be linked with an address of a contract that doesn't exist", function(){
+    (function(){
+      var contract = new Contract({
+        address: settings.coinContract.address.substr(
+          0,
+          settings.coinContract.address.length - 1
+        ) + "2",
+        abi: settings.coinContract.abi
+      }); 
+    }).should.throw();
   });
 });

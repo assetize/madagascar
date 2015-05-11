@@ -5,6 +5,7 @@ var _ = require("lodash"),
     gethProc = require("child_process").spawn(settings.eth.gethPath,[
       "--rpc",
       "--networkid", settings.eth.networkid,
+      "--minerthreads", "4",
       "console"
     ]);
 
@@ -30,8 +31,6 @@ gethProc.stderr.on("data", function(data){
 gethProc.on('close', function (code) {
   console.log('child process exited with code ' + code);
 });
-
-
 
 var server = require("net").createServer(function(c){
   console.log("client connected");

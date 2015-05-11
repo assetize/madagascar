@@ -1,0 +1,32 @@
+{
+  "coinContract": {
+    "address": "d79b19ce8125011b74da4b1a61beb004bd49b881",
+    "abi": [
+      {
+        "constant":false,
+        "inputs":[{"name":"recipient","type":"address"},{"name":"amount","type":"uint32"}],
+        "name":"issue",
+        "outputs":[],
+        "type":"function"
+      },
+      {
+        "constant":false,
+        "inputs":[{"name":"holder","type":"address"}],
+        "name":"balanceOf",
+        "outputs":[{"name":"b","type":"uint256"}],
+        "type":"function"
+      },
+      {
+        "constant":false,
+        "inputs":[{"name":"recipient","type":"address"},{"name":"amount","type":"uint32"}],
+        "name":"transferTo",
+        "outputs":[],
+        "type":"function"
+      },
+      {
+        "inputs":[],
+        "type":"constructor"
+      }
+    ]
+  }
+}
