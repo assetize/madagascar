@@ -6,5 +6,7 @@
     "rpcport": 8545,
     "networkid": 45876,
     "gethPath": "/Users/megatv/GO/src/github.com/ethereum/go-ethereum/build/bin/geth"
+  },
+  "contract": {
   }
 }

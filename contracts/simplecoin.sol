@@ -1,30 +1,25 @@
-contract owned{
-  function owned() {
-		owner = msg.sender;
-	}
-
-  modifier onlyowner() {
-		if(msg.sender==owner) _
-	}
-
+contract SimpleCoin{
+  mapping (address => uint32) balance;
   address owner;
-}
 
-contract SimpleCoin is owned {
-	mapping (address => uint32) balance;
+  function SimpleCoin(){
+    owner = msg.sender;
+  }
 
-	function issue(address recipient, uint32 amount) onlyowner{
-		balance[recipient] += amount;
-	}
+  function issue(address recipient, uint32 amount){
+    if(msg.sender == owner){
+      balance[recipient] += amount;
+    }
+  }
 
   function balanceOf(address holder) returns (uint b){
-		return balance[holder];
-	}
+    return balance[holder];
+  }
 
   function transferTo(address recipient, uint32 amount){
-		if(balance[msg.sender] < amount) return;
+    if(balance[msg.sender] < amount) return;
 
-		balance[msg.sender] -= amount;
-		balance[recipient] += amount;
-	}
+    balance[msg.sender] -= amount;
+    balance[recipient] += amount;
+  }
 }
