@@ -1,5 +1,7 @@
 var WebServer = require("../lib/webserver"),
-    request = require("request");
+    should = require("should"),
+    request = require("request"),
+    express = require("express");
 
 
 describe("WebServer", function(){
@@ -15,6 +17,23 @@ describe("WebServer", function(){
 
   it("responds to a status request", function(done){
     request.get(baseUrl + "/status").on("response", function(res){
+      res.statusCode.should.be.equal(200);
+      done();
+    });
+  });
+
+  it("registers new routes", function(done){
+    var router = express.Router();
+
+    router.get("/foo", function(req ,res){
+      res.sendStatus(200);
+    });
+
+    webserver.addRoutes("/bla", router);
+
+    webserver.start();
+
+    request.get(baseUrl + "/bla/foo").on("response", function(res){
       res.statusCode.should.be.equal(200);
       done();
     });

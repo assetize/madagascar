@@ -1,6 +1,6 @@
 var Contract = require("../lib/contract"),
     ethCmd = require("../lib/eth_cmd"),
-    settings = require("./test_settings"),
+    settings = require("./test_settings.json"),
     fs = require("fs");
 
 describe("Contract", function(){
@@ -46,14 +46,22 @@ describe("Contract", function(){
     });
   });
 
-  it("can be linked with an address and abi of an existing contract", function(){
-    var contract = new Contract({
-      address: settings.coinContract.address,
-      abi: settings.coinContract.abi
+  describe("when linked with an address and abi of an existing contract", function(){
+    var contract;
+    
+    before(function(){
+      contract = new Contract({
+        address: settings.contract.address,
+        abi: settings.contract.abi
+      });
     });
-
-    contract.code.length.should.be.above(2);
+    
+    it("exposes web3 contract interface", function(){
+      contract.balanceOf.should.be.a.Function;
+      contract.issue.should.be.a.Function;
+    });
   });
+
 
   it("cannot be linked with an address of a contract that doesn't exist", function(){
     (function(){

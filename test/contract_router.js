@@ -10,8 +10,8 @@ describe("Contract router", function(){
 
   before(function(){
     contract = new Contract({
-      address: settings.coinContract.address,
-      abi: settings.coinContract.abi
+      address: settings.contract.address,
+      abi: settings.contract.abi
     });
 
     contractRouter = new ContractRouter(contract);

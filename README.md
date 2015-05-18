@@ -1,3 +1,3 @@
 # Madagascar
 
-Tokenization API server
+General purpose Ethereum smart contract API server
