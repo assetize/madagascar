@@ -5,7 +5,7 @@
 
 # General purpose Ethereum smart contract API server
 
-The library is aimed at making it easier to programmatically interact with Ethereum smart contracts. It achieves that by creating a RESTful JSON api that reflects all functions of a given contract. As a result calls to contract functions can be made remotely via a traditional HTTP endpoint interface.
+The library is designed to make it easier to programmatically interact with smart contracts on [Ethereum](https://ethereum.org). It achieves that by creating a RESTful JSON api that reflects all functions of a given contract. As a result calls to contract functions can be made remotely via a traditional HTTP endpoint interface.
 
 To see how this works please check the [SimpleCoin API test](https://github.com/assetize/madagascar/blob/master/test/simple_coin_api.js)
 

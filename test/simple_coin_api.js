@@ -1,29 +1,34 @@
-var Madagascar = require("../lib"),
+var Mdg = require("../lib"),
     settings = require("./test_settings.json"),
     request = require("request").defaults({baseUrl: "http://localhost:" + settings.webserver.port}),
     async = require("async");
 
 describe("Simple Coin API", function(){
-  var madagascar, bobAddr, aliceAddr, bobBal, aliceBal, issueAmt = 1;
+  var mdg, bobAddr, aliceAddr, bobBal, aliceBal, issueAmt = 1;
   
   before(function(done){
-    madagascar = new Madagascar(settings);
+    //initialising the service and linking up with the contract
+    mdg = new Mdg(settings);
 
-    bobAddr = madagascar.web3.eth.accounts[0];
-    aliceAddr = madagascar.web3.eth.accounts[1];
+    //store 2 ethereum addresses for future use
+    bobAddr = mdg.web3.eth.accounts[0];
+    aliceAddr = mdg.web3.eth.accounts[1];
 
-    madagascar.start(function(){
+    //start the web server
+    mdg.start(function(){
       done();
     });
   });
 
   after(function(){
-    madagascar.kill();
+    //stopping the service
+    mdg.kill();
   });
 
   before(function(done){
     this.timeout(30000);
 
+    //requesting balances for alice and bob stored in the contract storage
     async.parallel([
       function(cb){
         request.get({
@@ -46,9 +51,11 @@ describe("Simple Coin API", function(){
     ], function(err, results){
       if(err) throw err;
 
+      //storing the received balances
       bobBal = parseInt(results[0], 10);
       aliceBal = parseInt(results[1], 10);
 
+      //issuing new coins to Bob
       request.post({
         url: "/contract/issue",
         json: {
@@ -73,6 +80,7 @@ describe("Simple Coin API", function(){
       },
       json: true
     }, function(err, res, body){
+      //check that Bob's balance is now higher than it used to be by the amount issued
       parseInt(body.b,10).should.be.equal(bobBal += issueAmt);
 
       done();
@@ -84,7 +92,9 @@ describe("Simple Coin API", function(){
     
     before(function(done){
       this.timeout(30000);
-      
+
+      //requesting to transfer some coins from Bob (who also happens to be the transaction sender,
+      // or primary address) to Alice
       request.post({
         url: "/contract/transferTo",
         json: {
@@ -108,6 +118,7 @@ describe("Simple Coin API", function(){
         },
         json: true
       }, function(err, res, body){
+        //checking that Bob's balance is now less than it used to be
         parseInt(body.b,10).should.be.equal(bobBal -= transfAmt);
         done();
       });
@@ -121,6 +132,7 @@ describe("Simple Coin API", function(){
         },
         json: true
       }, function(err, res, body){
+        // check that Alice's balance has increased as a result of the transfer
         parseInt(body.b,10).should.be.equal(aliceBal += transfAmt);
         done();
       });
