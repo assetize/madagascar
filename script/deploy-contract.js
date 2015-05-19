@@ -19,14 +19,13 @@ var cCode = fs.readFileSync(cFile).toString(),
 
 console.log("ABI:",JSON.stringify(compiled.info.abiDefinition, null, 2));
 
-var block = web3.eth.blockNumber;
-
+//TODO: calculate total cost and ask to confirm
 
 web3.eth.sendTransaction({
   from: web3.eth.coinbase,
   data: compiled.code,
   gas: "1000000",
-  gasPrice: "10000"
+  gasPrice: web3.eth.gasPrice.toString()
 }, function(err, addr){
   if(err) throw err;
   console.log("Deploying contract at:", addr);
