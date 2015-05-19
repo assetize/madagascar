@@ -1,13 +1,15 @@
 var Contract = require("../lib/contract"),
-    ethCmd = require("../lib/eth_cmd"),
     settings = require("./test_settings.json"),
-    fs = require("fs");
+    fs = require("fs"),
+    ethCmd = require("../lib/eth_cmd");
 
 describe("Contract", function(){
   describe("when linked with an address and abi of an existing contract", function(){
     var contract;
     
     before(function(){
+      ethCmd.connect();
+      
       contract = new Contract({
         address: settings.contract.address,
         abi: settings.contract.abi

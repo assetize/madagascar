@@ -17,6 +17,10 @@ describe("Simple Coin API", function(){
     });
   });
 
+  after(function(){
+    madagascar.kill();
+  });
+
   before(function(done){
     this.timeout(30000);
 
