@@ -6,8 +6,6 @@ var web3 = require("web3"),
 
 var cFile = process.argv[2];
 
-
-
 if(!cFile){
   usage();
   process.exit();
@@ -40,19 +38,11 @@ web3.eth.sendTransaction({
       console.log("Contract deployed successfully");
       process.exit();
     }else{
-      console.log("Not deployed yet, waiting for next block ...");
+      console.log("Not deployed yet, waiting for the next block ...");
     }
     
   });
 });
-
-// setTimeout(function(){
-//   console.log("CODE:", web3.eth.getCode(contractAddress));
-
-//   process.exit();
-// },10000);
-
-
 
 function usage(){
   console.log("Usage:" + "$deploy_contract.js <path-to-contract>");
