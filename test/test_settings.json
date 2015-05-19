@@ -5,13 +5,8 @@
   "eth": {
     "rpcport": 8545
   },
-  "addresses": [
-    "0x37b88c0b9e547a376476fa831e4581f2325748ba",
-    "0x6ee55e9130ad04dc827d369d9571d9ceba543c12",
-    "0xbf29e6c4ce8efad0f5a26068c59012f69a0732df"
-  ],
   "contract": {
-    "address": "0xf4acb227d855426f29368878b5aaeaf13dda098d",
+    "address": "0xa7e42e69b74d199910c362f5a693c13428f83aa4",
     "abi": [
       {
         "constant":false,
