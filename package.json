@@ -1,7 +1,9 @@
 {
   "name": "madagascar",
   "version": "0.0.1",
-  "description": "Tokenization API server",
+  "description": "General purpose Ethereum smart contract API server",
+  "license": "MIT",
+  "private": "false",
   "repository": {
     "type": "git",
     "url": "git@github.com:assetize/madagascar.git"
