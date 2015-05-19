@@ -21,6 +21,12 @@ The library requires a running instance of an Ethereum client with JSON-RPC enab
 * https://github.com/ethereum/go-ethereum
 * https://github.com/ethereum/cpp-ethereum
 
+Make sure your primary account (or coinbase) has some funds, or otherwise you will not be able to send any transactions. Apart from this, your primary account needs to be explicitly "unlocked" to allow for transactions being sent via a programmatic interface ([web3](https://github.com/ethereum/web3.js)). For example, with Geth you need to start your client with `--unlock primary`. The full command would look like:
+
+```
+geth --unlock primary --rpc
+```
+
 ## Usage
 
 ```js
@@ -39,3 +45,12 @@ A sample settings file can be found in `test/`
 * contract
   * address: address of the deployed contract to link to
   * abi: ABI interface of the contract (see https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI)
+
+## A note on running tests
+
+If you set up your Ethereum client to work as described in the Dependencies section then testing should be pretty straight forward. A word of advice would be to set up your Ethereum client to run a private chain so you have plenty of ether to spend. I would also recommend reducing the amount of hardware resource allocated to mining so that your maching makes a bit less noise. With Geth the full command would look like this (replace "12345" with any number):
+
+```
+geth --networkid 12345 --minerthreads 1  --rpc --unlock primary --mine
+```
+
