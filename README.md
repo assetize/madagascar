@@ -21,7 +21,7 @@ var mdg = (new Mdg(settings)).start();
 ## settings
 
 * webserver
-⋅* port: port number to start the web server on
+⋅⋅* port: port number to start the web server on
 * eth
 ⋅* rpcport: the port to connect to an ethereum client JSON-RPC on
 * contract
