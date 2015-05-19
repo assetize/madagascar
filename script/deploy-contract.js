@@ -23,20 +23,27 @@ console.log("ABI:",JSON.stringify(compiled.info.abiDefinition, null, 2));
 
 var block = web3.eth.blockNumber;
 
+
 web3.eth.sendTransaction({
   from: web3.eth.coinbase,
-  data: compiled.code
+  data: compiled.code,
+  gas: "1000000",
+  gasPrice: "10000"
 }, function(err, addr){
   if(err) throw err;
-  console.log("Address:", addr);
+  console.log("Deploying contract at:", addr);
 
-  console.log("pending txs",web3.eth.getBlock("pending", true).transactions);
-
-  console.log("contract:", web3.eth.getCode(addr));
-
-  console.log("block", web3.eth.getBlock("pending", true));
-
-  process.exit();
+  web3.eth.filter("latest", {
+    address: addr
+  }).watch(function(){
+    if(web3.eth.getCode(addr).length > 2){
+      console.log("Contract deployed successfully");
+      process.exit();
+    }else{
+      console.log("Not deployed yet, waiting for next block ...");
+    }
+    
+  });
 });
 
 // setTimeout(function(){

@@ -13,12 +13,13 @@ describe("Simple Coin API", function(){
     });
   });
 
-  it("@now", function(){
+  it("@now", function(done){
     var web3 = require("web3");
     var c = web3.eth.contract(settings.contract.abi).at(settings.contract.address);
 
     c.issue.sendTransaction(settings.addresses[0], 1,{from: web3.eth.coinbase}, function(){
       console.log(arguments);
+      done();
     });
   });
 
