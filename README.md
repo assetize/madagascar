@@ -1,16 +1,27 @@
-# Madagascar
+# Madagascar (mdg)
 
 [![npm version](https://badge.fury.io/js/mdg.svg)](http://badge.fury.io/js/mdg)
 
+
 # General purpose Ethereum smart contract API server
 
-## installation
+The library is aimed at making it easier to programmatically interact with Ethereum smart contracts. It achieves that by creating a RESTful JSON api that reflects all functions of a given contract. As a result calls to contract functions can be made remotely via a traditional HTTP endpoint interface.
+
+To see how this works please check the [SimpleCoin API test](https://github.com/assetize/madagascar/blob/master/test/simple_coin_api.js)
+
+## Installation
 
 ```
 npm install mdg
 ```
 
-## usage
+## Dependencies
+
+The library requires a running instance of an Ethereum client with JSON-RPC enabled. See:
+* https://github.com/ethereum/go-ethereum
+* https://github.com/ethereum/cpp-ethereum
+
+## Usage
 
 ```js
 var Mdg = require("mdg");
@@ -18,7 +29,8 @@ var Mdg = require("mdg");
 var mdg = (new Mdg(settings)).start();
 ```
 
-## settings
+## Settings
+A sample settings file can be found in `test/`
 
 * webserver
   * port: port number to start the web server on
