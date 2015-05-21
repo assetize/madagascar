@@ -19,6 +19,12 @@ npm install mdg
 
 ## Dependencies
 
+### io.js
+
+The library is built with the latest features of ES6 supported by [https://iojs.org/en/index.html](io.js)
+
+### Ethereum
+
 The library requires a running instance of an Ethereum client with JSON-RPC enabled. See:
 * [https://github.com/ethereum/go-ethereum](https://github.com/ethereum/go-ethereum)
 * [https://github.com/ethereum/cpp-ethereum](https://github.com/ethereum/cpp-ethereum)
