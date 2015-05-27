@@ -3,7 +3,7 @@ var Mdg = require("../lib"),
     request = require("request").defaults({baseUrl: "http://localhost:" + settings.webserver.port}),
     async = require("async");
 
-describe("Simple Coin API", function(){
+describe("Contract API", function(){
   var mdg, bobAddr, aliceAddr, bobBal, aliceBal, issueAmt = 1;
   
   before(function(done){
