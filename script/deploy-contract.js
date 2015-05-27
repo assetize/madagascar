@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 var web3 = require("web3"),
-    fs = require("fs");
+    fs = require("fs"),
+    _ = require("lodash");
 
 
 var cFile = process.argv[2];
@@ -15,21 +16,23 @@ if(!cFile){
 web3.setProvider(new web3.providers.HttpProvider('http://localhost:8545'));
 
 var cCode = fs.readFileSync(cFile).toString(),
-    compiled = web3.eth.compile.solidity(cCode);
+    compiled = _.values(web3.eth.compile.solidity(cCode))[0];
 
 console.log("ABI:",JSON.stringify(compiled.info.abiDefinition, null, 2));
 
+//console.log(web3.eth.getCode('0x0af80bad2f44f3d87215c9c4e81798451a821375'));
+//process.exit();
 //TODO: calculate total cost and ask to confirm
 
 web3.eth.sendTransaction({
   from: web3.eth.coinbase,
   data: compiled.code,
-  gas: "1000000",
-  gasPrice: web3.eth.gasPrice.toString()
+  gas: "1000000"
 }, function(err, addr){
   if(err) throw err;
   console.log("Deploying contract at:", addr);
 
+  //TODO: add counter
   web3.eth.filter("latest", {
     address: addr
   }).watch(function(){

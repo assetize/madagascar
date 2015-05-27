@@ -6,7 +6,7 @@
     "rpcport": 8545
   },
   "contract": {
-    "address": "0xa7e42e69b74d199910c362f5a693c13428f83aa4",
+    "address": "0x8bf91757e0fdfc9b17aa2ccb75345a79c58f9f5f",
     "abi": [
       {
         "constant":false,

@@ -1,4 +1,4 @@
-#!/usr/bin/env node --es_staging
+#!/usr/bin/env node
 
 var Madagascar = require("../lib"),
     settings = require("../test/test_settings.json");

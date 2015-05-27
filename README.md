@@ -29,6 +29,8 @@ The library requires a running instance of an Ethereum client with JSON-RPC enab
 * [https://github.com/ethereum/go-ethereum](https://github.com/ethereum/go-ethereum)
 * [https://github.com/ethereum/cpp-ethereum](https://github.com/ethereum/cpp-ethereum)
 
+If you are planning to use Geth (best choice as it stands), you will also need solc from cpp-ethereum if you want to be able to compile contracts from cli.
+
 Make sure your primary account (or coinbase) has some funds, or otherwise you will not be able to send any transactions. Apart from this, your primary account needs to be explicitly "unlocked" to allow for transactions being sent via a programmatic interface ([web3](https://github.com/ethereum/web3.js)). For example, with Geth you need to start your client with `--unlock primary`. The full command would look like:
 
 ```
