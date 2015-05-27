@@ -6,7 +6,7 @@ var WebServer = require("../lib/webserver"),
 
 describe("WebServer", function(){
   it("registers new routes", function(done){
-    var webserver = new WebServer();
+    var webserver = WebServer();
     var router = express.Router();
 
     router.get("/foo", function(req ,res){
