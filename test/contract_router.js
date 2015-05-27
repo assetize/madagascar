@@ -9,12 +9,12 @@ describe("Contract router", function(){
       contractRouter;
 
   before(function(){
-    contract = new Contract({
+    contract = Contract({
       address: settings.contract.address,
       abi: settings.contract.abi
     });
 
-    contractRouter = new ContractRouter(contract);
+    contractRouter = ContractRouter(contract);
   });
 
   it("creates routes", function(){

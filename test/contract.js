@@ -3,7 +3,7 @@ var Contract = require("../lib/contract"),
     fs = require("fs"),
     ethCmd = require("../lib/eth_cmd");
 
-describe("Contract @now", function(){
+describe("Contract", function(){
   var testInterface = function(contract){
     contract.$.balanceOf.sendTransaction.should.be.a.Function;
     contract.$.issue.sendTransaction.should.be.a.Function;
@@ -55,11 +55,7 @@ describe("Contract @now", function(){
     }, function(err, addr){
       if(err) throw err;
       
-      contract.on("tx_confirmed", function(a){
-        a.should.be.equal(addr);
-        
-        done();
-      });
+      contract.on("tx_confirmed:"+addr, done);
     });
   });
 
