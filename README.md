@@ -9,7 +9,7 @@ The library is designed to make it easier to programmatically interact with smar
 
 It also features a fully functional integration test suite that allows for automated testing of smart contract functions. 
 
-To see how this works please check the [SimpleCoin API test](https://github.com/assetize/madagascar/blob/master/test/simple_coin_api.js)
+To see how this works please check the [Contract API test](https://github.com/assetize/madagascar/blob/master/test/contract_api.js)
 
 ## Installation
 
